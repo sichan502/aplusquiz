@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>A+ Quiz</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache"/>
+
+    <!-- style -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!--BS CSS-->
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+
+  <body>
+      <header>
+        <h1>A+ Quiz</h1>
+      </header>
+        
+      <main>
+        <div id="content">
+            <h3>Ready to test your coding knowledge?</h3>
+            <button id="start">START</button>
+            <div id="btngroup">
+                <button id="random">RANDOM</button>
+                <button id="customize">CUSTOMIZE</button>
+            </div>
+        </div>
+
+        <div id="question">
+            <div id="question-top">
+                <div id="question-btngroup">
+                    <button id="submit">SUBMIT</button>
+                    <p id="question-num">Question 1</p>
+                    <button id="next">Next</button>
+                </div>
+            </div>
+            <div id="question-content">
+                <p>Which of the following is NOT a valid 
+                    PHP comparison operator?</p>
+                <div id="answer-options">
+                    <ul>
+                        <li><button class="options"><=></button></li>
+                        <li><button class="options"><></button></li>
+                        <li><button class="options">>==</button></li>
+                        <li><button class="options">>=</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+      </main>
+      
+      <footer>
+        <h5>© 2021 A+ QUIZ</h5>
+      </footer>
+      
+      <script src="index.js"></script>
+  </body>
+</html>
