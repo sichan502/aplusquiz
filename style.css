@@ -25,7 +25,7 @@
     color: #FAFF00;
     box-sizing: border-box;
     font-family: var(--titlefont);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 header
