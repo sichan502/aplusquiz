@@ -1,4 +1,4 @@
-import {quizapi} from './config.js';
+// import {quizapi} from './config.js';
 
 let questionlist = [];
 const randombtn = document.querySelector("#random");
@@ -26,7 +26,7 @@ function fetchquestion(question_type, category)
 {
     if(question_type == "random")
     {
-        fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizapi}&limit=10`)
+        fetch(`https://quizapi.io/api/v1/questions?apiKey=8oaKGqSQ6JYN7Dqs8P7nSaYTZPDlGhRLYZ0V6PPF&limit=10`)
         .then(response => response.json())
         .then(data => {
             questionlist = data;
@@ -39,7 +39,7 @@ function fetchquestion(question_type, category)
     }
     else /* customize */
     {
-        fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizapi}&category=${category}&limit=10`)
+        fetch(`https://quizapi.io/api/v1/questions?apiKey=8oaKGqSQ6JYN7Dqs8P7nSaYTZPDlGhRLYZ0V6PPF&category=${category}&limit=10`)
         .then(response => response.json())
         .then(data => {
             questionlist = data;
