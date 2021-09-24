@@ -1,4 +1,4 @@
-import {quizapi} from './quizapi.js';
+import {quizapi} from './config.js';
 
 let questionlist = [];
 const randombtn = document.querySelector("#random");
