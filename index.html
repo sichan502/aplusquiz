@@ -20,16 +20,51 @@
         
       <main>
         <div id="content">
+            <div id="btngroup-customize">
+              <button id="back">BACK</button>
+              <button id="go">GO</button>
+            </div>
             <h3>Ready to test your coding knowledge?</h3>
             <button id="start">START</button>
             <div id="btngroup">
                 <button id="random">RANDOM</button>
                 <button id="customize">CUSTOMIZE</button>
             </div>
+            <div id="customize-field">
+              <form action="">
+                <label for="category">Category</label>
+                <br>
+                <select name="category" id="category">
+                  <option value="linux">Linux</option>
+                  <option value="bash">Bash</option>
+                  <option value="html">HTML</option>
+                  <option value="mysql">MySQL</option>
+                  <option value="php">PHP</option>
+                  <option value="docker">Docker</option>
+                  <option value="wordpress">WordPress</option>
+                  <option value="laravel">Laravel</option>
+                  <option value="kubernetes">Kubernetes</option>
+                  <option value="javascript">JavaScript</option>
+                  <option value="devops">DevOps</option>
+                </select>
+              </form>
+            </div>
         </div>
 
         <div id="question">
-            <!-- <div id="question-top">
+        </div>
+      </main>
+      
+      <footer>
+        <h5>© 2021 A+ QUIZ</h5>
+      </footer>
+      
+      <script type="text/javascript" scr="config.js"></script>
+      <script type="module" src="index.js"></script>
+  </body>
+</html>
+
+<!-- <div id="question-top">
                 <div id="question-btngroup">
                     <button id="submit" class="disable">SUBMIT</button>
                     <p id="question-num">Question 1</p>
@@ -48,14 +83,3 @@
                     </ul>
                 </div>
             </div> -->
-        </div>
-      </main>
-      
-      <footer>
-        <h5>© 2021 A+ QUIZ</h5>
-      </footer>
-      
-      <script type="text/javascript" scr="config.js"></script>
-      <script type="module" src="index.js"></script>
-  </body>
-</html>

@@ -70,7 +70,7 @@ main
     color: #000000;
 }
 
-#start, #random, #customize
+#start, #random, #customize, #back, #go
 {
     margin: 8% 0;
     font-family: var(--contentfont);
@@ -87,6 +87,7 @@ main
 #start
 {
     display: inline-block;
+    /* display: none; */
 }
 
 #btngroup
@@ -94,6 +95,42 @@ main
     display: none;
     width: 100%;
 }
+
+#btngroup-customize
+{   
+    margin-top: -10%;
+    margin-bottom: 5%;
+    display: none;
+}
+
+#customize-field
+{
+    display: none;
+    width: 50%;
+    padding-top: 2%;
+    margin: 0 auto;
+}
+
+label
+{
+    margin-top: 8%;
+    font-size: 30px;
+    padding: 4%;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: var(--contentfont);
+}
+
+#category, option
+{
+    text-align: center;
+    color: #000000;
+    font-family: var(--contentfont);
+}
+
+
 /* QESTION TOP END */
 
 /* QUESTION START */
