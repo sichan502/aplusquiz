@@ -167,7 +167,22 @@ main
 
 .options:hover
 {
-    background-color: bisque;
+    background-color: #FAFF00;
+}
+
+.select
+{
+    background-color: #FAFF00;
+}
+
+.disable
+{
+    opacity: 0.5;
+}
+
+.disable:hover
+{
+    cursor: not-allowed;
 }
 /* QUESTION END */
 /* BODY END */
