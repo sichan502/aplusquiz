@@ -15,7 +15,7 @@
 
   <body>
       <header>
-        <h1>A+ Quiz</h1>
+        <a id="title" href="index.html"><h1>A+ Quiz</h1></a>
       </header>
         
       <main>
@@ -31,23 +31,18 @@
                 <button id="customize">CUSTOMIZE</button>
             </div>
             <div id="customize-field">
-              <form action="">
-                <label for="category">Category</label>
-                <br>
-                <select name="category" id="category">
-                  <option value="linux">Linux</option>
-                  <option value="bash">Bash</option>
-                  <option value="html">HTML</option>
-                  <option value="mysql">MySQL</option>
-                  <option value="php">PHP</option>
-                  <option value="docker">Docker</option>
-                  <option value="wordpress">WordPress</option>
-                  <option value="laravel">Laravel</option>
-                  <option value="kubernetes">Kubernetes</option>
-                  <option value="javascript">JavaScript</option>
-                  <option value="devops">DevOps</option>
-                </select>
-              </form>
+              <label for="category">Category</label>
+              <br>
+              <select name="category" id="category">
+                <option value="linux">Linux</option>
+                <option value="bash">Bash</option>
+                <option value="sql">SQL</option>
+                <option value="docker">Docker</option>
+                <option value="cms">CMS</option>
+                <option value="code">Code</option>
+                <option value="devops">DevOps</option>
+                <option value="uncategorized">Uncategorized</option>
+              </select>
             </div>
         </div>
 

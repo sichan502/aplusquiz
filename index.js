@@ -1,6 +1,8 @@
-import {quizapi} from './config.js';
+// import {quizapi} from './config.js';
 
 let questionlist = [];
+let choice = "linux";
+
 const randombtn = document.querySelector("#random");
 const customizebtn = document.querySelector("#customize");
 const questionpage = document.querySelector("#question");
@@ -12,6 +14,7 @@ const customizefield = document.querySelector("#customize-field");
 const content = document.querySelector("#content");
 const backbtn = document.querySelector("#back");
 const gobtn = document.querySelector("#go");
+const choicelist = document.getElementById("category");
 
 /* initial */
 startbtn.addEventListener("click", () => {
@@ -30,6 +33,11 @@ customizebtn.addEventListener("click", () => {
     btngroup.style.display = "none";
     customizefield.style.display = "block";
     btngroupcustomize.style.display = "block";
+    
+    choicelist.addEventListener("change", () => {
+        choice = choicelist.value;
+    })
+    
 })
 
 backbtn.addEventListener("click", () => {
@@ -41,7 +49,7 @@ backbtn.addEventListener("click", () => {
 gobtn.addEventListener("click", () => {
     content.style.display = "none";
     questionpage.style.display = "block";
-    fetchquestion("customize", "")
+    fetchquestion("customize", choice);
 })
 /* initial */
 
@@ -51,7 +59,7 @@ function fetchquestion(question_type, category)
     if(question_type == "random")
     {
         console.log("fetching random question...")
-        fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizapi}&limit=10`)
+        fetch(`https://quizapi.io/api/v1/questions?apiKey=xLrepXP2CE14m5SRsx2rxk7Fb0pRVSDrGEKyq9q6&limit=10`)
         .then(response => response.json())
         .then(data => {
             questionlist = data;
@@ -65,9 +73,10 @@ function fetchquestion(question_type, category)
     else /* customize */
     {
         console.log("fetching customize question...")
-        fetch(`https://quizapi.io/api/v1/questions?apiKey=${quizapi}&category=${category}&limit=10`)
+        fetch(`https://quizapi.io/api/v1/questions?apiKey=xLrepXP2CE14m5SRsx2rxk7Fb0pRVSDrGEKyq9q6&category=${category}&limit=10`)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             questionlist = data;
             console.log("store data")
             return questionlist;
@@ -124,7 +133,7 @@ function setbtn(qlist, qnum)
 
     /* click submit */
 
-    if(qnum == 10)
+    if(qnum == qlist.length)
     {
         nextbtn.style.visibility = "hidden";
     }

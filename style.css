@@ -45,6 +45,10 @@ h1
     font-size: 70px;
 }
 
+#title
+{
+    text-decoration: none;
+}
 /* HEADER END */
 
 
