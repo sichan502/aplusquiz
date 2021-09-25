@@ -2,6 +2,7 @@
 
 let questionlist = [];
 let choice = "linux";
+let sumbitans = false;
 
 const randombtn = document.querySelector("#random");
 const customizebtn = document.querySelector("#customize");
@@ -95,9 +96,9 @@ function displayquestion(qlist, qnum)
     let out = ``;
     out = `<div id="question-top">
                 <div id="question-btngroup">
-                    <button id="submit" class="disable">SUBMIT</button>
+                    <button id="submit" class="disable" disabled>SUBMIT</button>
                     <p id="question-num">Question ${qnum + 1}</p>
-                    <button id="next" class="disable">Next</button>
+                    <button id="next" class="disable" disabled>Next</button>
                 </div>
             </div>
             <div id="question-content">
@@ -129,6 +130,8 @@ function setbtn(qlist, qnum)
     submitbtn.addEventListener("click", () => {
         nextbtn.classList.remove("disable");
         submitbtn.classList.add("disable");
+        nextbtn.disabled = false;
+        sumbitans = true;
     })
 
     /* click submit */
@@ -142,7 +145,7 @@ function setbtn(qlist, qnum)
         /* click next */
         nextbtn.addEventListener("click", () => {
             console.log("next question");
-
+            sumbitans = false;
             displayquestion(qlist, qnum);
         })
         /* click next */
@@ -153,14 +156,22 @@ function setbtn(qlist, qnum)
 
     optionslist.forEach(option => {
         option.addEventListener("click", () => {
-            let curSelect = document.querySelector(".select");
-            if(curSelect)
+            if(submitbtn.disabled)
             {
-                curSelect.classList.remove("select");
+                submitbtn.classList.remove("disable");
+                submitbtn.disabled = false;
             }
-            
-            option.classList.add("select");
-            submitbtn.classList.remove("disable")
+
+            if(!sumbitans)
+            {
+                let curSelect = document.querySelector(".select");
+                if(curSelect)
+                {
+                    curSelect.classList.remove("select");
+                }
+
+                option.classList.add("select");
+            }
         })
     })
 
