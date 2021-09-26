@@ -92,28 +92,32 @@ function fetchquestion(question_type, category)
 /* display question */
 function displayquestion(qlist, qnum)
 {
-    console.log("display question")
     let out = ``;
-    out = `<div id="question-top">
-                <div id="question-btngroup">
-                    <button id="submit" class="disable" disabled>SUBMIT</button>
-                    <p id="question-num">Question ${qnum + 1}</p>
-                    <button id="next" class="disable" disabled>Next</button>
-                </div>
-            </div>
-            <div id="question-content">
-                <p>${qlist[qnum].question}</p>
-                <div id="answer-options">
-                    <ul>
-                        <li><button class="options">${qlist[qnum].answers.answer_a}</button></li>
-                        <li><button class="options">${qlist[qnum].answers.answer_b}</button></li>
-                        <li><button class="options">${qlist[qnum].answers.answer_c}</button></li>
-                        <li><button class="options">${qlist[qnum].answers.answer_d}</button></li>
-                        <li><button class="options">${qlist[qnum].answers.answer_e}</button></li>
-                        <li><button class="options">${qlist[qnum].answers.answer_f}</button></li>
-                    </ul>
-                </div>
-            </div>`
+    const firstpart = `<div id="question-top">
+                        <div id="question-btngroup">
+                            <button id="submit" class="disable" disabled>SUBMIT</button>
+                            <p id="question-num">Question ${qnum + 1}</p>
+                            <button id="next" class="disable" disabled>Next</button>
+                        </div>
+                        </div>
+                        <div id="question-content">
+                            <p>${qlist[qnum].question}</p>
+                            <div id="answer-options">
+                                <ul>`
+    let middlepart = ``;
+    const lastpart = `</ul>
+                    </div>
+                </div>`
+
+    for(let i in qlist[qnum].answers)
+    {
+        if(qlist[qnum].answers[i])
+        {
+            middlepart += `<li><button class="options">${qlist[qnum].answers[i]}</button></li>`
+        }
+    }
+
+    out = firstpart + middlepart + lastpart;
     questionpage.innerHTML = out;
     setbtn(qlist, ++qnum);
 }
@@ -198,3 +202,25 @@ function setbtn(qlist, qnum)
                     </ul>
                 </div>
             </div> */
+
+
+// out = `<div id="question-top">
+//             <div id="question-btngroup">
+//                 <button id="submit" class="disable" disabled>SUBMIT</button>
+//                 <p id="question-num">Question ${qnum + 1}</p>
+//                 <button id="next" class="disable" disabled>Next</button>
+//             </div>
+//         </div>
+//         <div id="question-content">
+//             <p>${qlist[qnum].question}</p>
+//             <div id="answer-options">
+//                 <ul>
+//                     <li><button class="options">${qlist[qnum].answers.answer_a}</button></li>
+//                     <li><button class="options">${qlist[qnum].answers.answer_b}</button></li>
+//                     <li><button class="options">${qlist[qnum].answers.answer_c}</button></li>
+//                     <li><button class="options">${qlist[qnum].answers.answer_d}</button></li>
+//                     <li><button class="options">${qlist[qnum].answers.answer_e}</button></li>
+//                     <li><button class="options">${qlist[qnum].answers.answer_f}</button></li>
+//                 </ul>
+//             </div>
+//         </div>`
