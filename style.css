@@ -183,10 +183,22 @@ label
     padding-top: 2%;
 }
 
+#question-content > p
+{
+    border-bottom: #000000 solid 6px;
+}
+
 #answer-options > ul
 {
     padding: 0;
-    list-style: none;
+    /* list-style: none; */
+}
+
+#answer-options > ul > li
+{
+    color: #000000;
+    list-style: lower-alpha;
+    font-family: var(--contentfont);
 }
 
 #question-content > p
@@ -224,6 +236,16 @@ label
 .disable:hover
 {
     cursor: not-allowed;
+}
+
+.correct
+{
+    background-color: rgb(9, 253, 9);
+}
+
+.wrong
+{
+    background-color: rgb(255, 0, 0);
 }
 /* QUESTION END */
 /* BODY END */

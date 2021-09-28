@@ -182,12 +182,13 @@ function anscheck(qlist, qnum, selectans)
     // console.log("selected ans: " + selectans.dataset.id)
     if(qlist[qnum].correct_answers[a] === "true")
     {
-        console.log("correct")
-        console.log(a)
+        selectans.classList.add("correct");
+        alert("You got it right!");
     }
     else
     {
-        console.log("wrong");
+        selectans.classList.add("wrong");
+        alert("It is incorrect.");
     }
 }
 /* check ans */
