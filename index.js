@@ -113,60 +113,50 @@ function displayquestion(qlist, qnum)
     {
         if(qlist[qnum].answers[i])
         {
-            middlepart += `<li><button class="options">${qlist[qnum].answers[i]}</button></li>`
+            middlepart += `<li><button data-id="${i}" class="options">${qlist[qnum].answers[i]}</button></li>`
         }
     }
 
     out = firstpart + middlepart + lastpart;
     questionpage.innerHTML = out;
-    setbtn(qlist, ++qnum);
+    selectAns(qlist, qnum);
 }
 /* display question */
 
-/* set up button */
-function setbtn(qlist, qnum)
+/* select ans */
+function selectAns(qlist, qnum)
 {
     const nextbtn = document.querySelector("#next");
     const submitbtn = document.querySelector("#submit");
     const optionslist = document.querySelectorAll(".options");
-    /* click submit */
 
-    submitbtn.addEventListener("click", () => {
-        nextbtn.classList.remove("disable");
-        submitbtn.classList.add("disable");
-        nextbtn.disabled = false;
-        sumbitans = true;
-    })
-
-    /* click submit */
-
-    if(qnum == qlist.length)
+    if(qnum + 1 == qlist.length)
     {
         nextbtn.style.visibility = "hidden";
     }
-    else
-    {
-        /* click next */
-        nextbtn.addEventListener("click", () => {
-            console.log("next question");
-            sumbitans = false;
-            displayquestion(qlist, qnum);
-        })
-        /* click next */
-    }
-    
 
-    /* select ans */
+    submitbtn.addEventListener("click", () => {
+        let curSelect = document.querySelector(".select");
+        anscheck(qlist, qnum, curSelect);
+        submitbtn.classList.add("disable");
+        submitbtn.disabled = true;
+        nextbtn.classList.remove("disable");
+        nextbtn.disabled = false;
+
+        nextbtn.addEventListener("click", () => {
+            displayquestion(qlist, ++qnum);
+        })
+    })
 
     optionslist.forEach(option => {
         option.addEventListener("click", () => {
-            if(submitbtn.disabled)
+            if(submitbtn.disabled && nextbtn.disabled)
             {
                 submitbtn.classList.remove("disable");
                 submitbtn.disabled = false;
             }
-
-            if(!sumbitans)
+            
+            if(nextbtn.disabled)
             {
                 let curSelect = document.querySelector(".select");
                 if(curSelect)
@@ -178,10 +168,29 @@ function setbtn(qlist, qnum)
             }
         })
     })
-
-    /* select ans */
 }
-/* set up button */
+/* select ans */
+
+/* check ans */
+function anscheck(qlist, qnum, selectans)
+{
+    let a = selectans.dataset.id + "_correct";
+    
+    // console.log("check question " + qnum + " answer")
+    // console.log(qlist[qnum])
+    // console.log(qlist[qnum].correct_answers[a])
+    // console.log("selected ans: " + selectans.dataset.id)
+    if(qlist[qnum].correct_answers[a] === "true")
+    {
+        console.log("correct")
+        console.log(a)
+    }
+    else
+    {
+        console.log("wrong");
+    }
+}
+/* check ans */
 
 /* <div id="question-top">
                 <div id="question-btngroup">
