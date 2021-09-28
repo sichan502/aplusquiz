@@ -3,6 +3,7 @@
 let questionlist = [];
 let choice = "linux";
 let sumbitans = false;
+let correctans = 0;
 
 const randombtn = document.querySelector("#random");
 const customizebtn = document.querySelector("#customize");
@@ -68,7 +69,7 @@ function fetchquestion(question_type, category)
             return questionlist;
         })
         .then(qlist => {
-            displayquestion(qlist, 0);
+            displayquestion(qlist, 0, correctans);
         })
     }
     else /* customize */
@@ -83,14 +84,14 @@ function fetchquestion(question_type, category)
             return questionlist;
         })
         .then(qlist => {
-            displayquestion(qlist, 0);
+            displayquestion(qlist, 0, correctans);
         })
     }
 }
 /* fetch question based on question type or question type and category */
 
 /* display question */
-function displayquestion(qlist, qnum)
+function displayquestion(qlist, qnum, correctans)
 {
     let out = ``;
     const firstpart = `<div id="question-top">
@@ -119,12 +120,12 @@ function displayquestion(qlist, qnum)
 
     out = firstpart + middlepart + lastpart;
     questionpage.innerHTML = out;
-    selectAns(qlist, qnum);
+    selectAns(qlist, qnum, correctans);
 }
 /* display question */
 
 /* select ans */
-function selectAns(qlist, qnum)
+function selectAns(qlist, qnum, correctans)
 {
     const nextbtn = document.querySelector("#next");
     const submitbtn = document.querySelector("#submit");
@@ -137,15 +138,22 @@ function selectAns(qlist, qnum)
 
     submitbtn.addEventListener("click", () => {
         let curSelect = document.querySelector(".select");
-        anscheck(qlist, qnum, curSelect);
+        correctans = anscheck(qlist, qnum, curSelect, correctans);
         submitbtn.classList.add("disable");
         submitbtn.disabled = true;
         nextbtn.classList.remove("disable");
         nextbtn.disabled = false;
 
-        nextbtn.addEventListener("click", () => {
-            displayquestion(qlist, ++qnum);
-        })
+        if(qnum + 1 == qlist.length)
+        {
+            alert("Here is the end of the quiz! \nYou got " + correctans + " questions correct out of " + qlist.length);
+        }
+        else
+        {
+            nextbtn.addEventListener("click", () => {
+                displayquestion(qlist, ++qnum, correctans);
+            })
+        }
     })
 
     optionslist.forEach(option => {
@@ -172,24 +180,23 @@ function selectAns(qlist, qnum)
 /* select ans */
 
 /* check ans */
-function anscheck(qlist, qnum, selectans)
+function anscheck(qlist, qnum, selectans, correctans)
 {
     let a = selectans.dataset.id + "_correct";
     
-    // console.log("check question " + qnum + " answer")
-    // console.log(qlist[qnum])
-    // console.log(qlist[qnum].correct_answers[a])
-    // console.log("selected ans: " + selectans.dataset.id)
     if(qlist[qnum].correct_answers[a] === "true")
     {
         selectans.classList.add("correct");
         alert("You got it right!");
+        correctans++;
     }
     else
     {
         selectans.classList.add("wrong");
         alert("It is incorrect.");
     }
+
+    return correctans;
 }
 /* check ans */
 
